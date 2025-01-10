@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Academia</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3e5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #6a1b9a;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-top: 10px;
+            color: #4a148c;
+        }
+        input, select, button {
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+        button {
+            background-color: #7b1fa2;
+            color: white;
+            cursor: pointer;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: #4a148c;
+        }
+        #listaAlunos {
+            list-style-type: none;
+            padding: 0;
+        }
+        #listaAlunos li {
+            background-color: #f3e5f5;
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #ce93d8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cadastro de Alunos da Academia</h1>
+        <form id="cadastroForm">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required>
+
+            <label for="idade">Idade:</label>
+            <input type="number" id="idade" name="idade" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="plano">Plano:</label>
+            <select id="plano" name="plano">
+                <option value="mensal">Mensal</option>
+                <option value="trimestral">Trimestral</option>
+                <option value="anual">Anual</option>
+            </select>
+
+            <label for="doenca">Tem alguma doença cardiológica?</label>
+            <select id="doenca" name="doenca">
+                <option value="nao">Não</option>
+                <option value="sim">Sim</option>
+            </select>
+
+            <label for="frequencia">Quantas vezes pretende ir na academia por semana?</label>
+            <input type="number" id="frequencia" name="frequencia" required>
+
+            <button type="submit">Cadastrar</button>
+        </form>
+
+        <h2>Alunos Cadastrados</h2>
+        <ul id="listaAlunos"></ul>
+    </div>
+
+    <script>
+        document.getElementById('cadastroForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Captura os valores dos campos
+            const nome = document.getElementById('nome').value;
+            const idade = document.getElementById('idade').value;
+            const email = document.getElementById('email').value;
+            const plano = document.getElementById('plano').value;
+            const doenca = document.getElementById('doenca').value;
+            const frequencia = document.getElementById('frequencia').value;
+
+            // Cria um novo item de lista com os dados do aluno
+            const alunoItem = document.createElement('li');
+            alunoItem.textContent = `Nome: ${nome}, Idade: ${idade}, Email: ${email}, Plano: ${plano}, Doença Cardiológica: ${doenca}, Frequência: ${frequencia} vezes/semana`;
+
+            // Adiciona o item à lista de alunos cadastrados
+            document.getElementById('listaAlunos').appendChild(alunoItem);
+
+            // Limpa os campos do formulário
+            document.getElementById('cadastroForm').reset();
+        });
+    </script>
+</body>
+</html>
+ 
